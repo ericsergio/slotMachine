@@ -1,17 +1,15 @@
-h1 {
-  position:absolute;
-  top:20vh;
-  left:60vw;
-    animation-name:typing;
-    animation-duration:5s;
-    animation-timing-function: linear;
+#slotCanvas{
+  position: absolute;
+  top:32vh;
+  left:20vw;
+  border:solid red 2px;
 }
 
 #grid {
   position: absolute;
   top:32vh;
   left:20vw;
-
+  border:solid blue 2px;
 }
 
 #grid ul{
@@ -26,7 +24,8 @@ h1 {
   border:solid black 2px;
   text-align: center;
   padding:7%;
-  margin-left:8%;
+  margin-right:2vw;
+  font-size:1.8em;
 }
 
 #spin{
@@ -42,11 +41,7 @@ h1 {
   radial-gradient(circle at 35% 75%, transparent 2%, rgb(110, 159, 199) 70%) 55% 15%;
 }
 
-#slotCanvas{
-  position: absolute;
-  top:35vh;
-  left:25vw;
-}
+
 
 /*
 .playerStats #playerBank {

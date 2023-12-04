@@ -1,9 +1,17 @@
 @media only screen and (orientation: portrait) {
       
+    #slotCanvas{
+        position: absolute;
+        top:12vh;
+        left:2vw;
+        border:solid red 2px;
+      }
+
       #grid {
         position: absolute;
         top:12vh;
-        left:5vw;
+        left:2vw;
+        border:solid blue 2px;
       }
       
       #grid ul{
@@ -13,34 +21,53 @@
       
       #grid ul li{
         list-style-type: none;
-        height:4vh;
-        width:9vw;
+        height:8vh;
+        width:13vw;
         border:solid black 2px;
         text-align: center;
         padding:7%;
-        margin-left:8%;
+        font-size:2.6em;
+        margin-left:3vw;
       }
       
       #spin{
         position: absolute;
-        top:31vh;
-        left:45vw;
-        height:45px;
-        width:90px;
+        top:46vh;
+        left:76vw;
+        height:5vh;
+        width:14vw;
+        font-size:1.8em;
         border-radius: 5%;  
         color:#000;
         box-shadow: 0 30px 20px rgba(0, 0, 0, 0.7);
         background: radial-gradient(circle at 30% 35%, transparent 30%, rgb(240, 40, 90) 55%) 10% 25%,
         radial-gradient(circle at 35% 75%, transparent 2%, rgb(110, 159, 199) 70%) 55% 15%;
       }
-      
-      #slotCanvas{
+
+      #betButtons {
         position: absolute;
-        top:14vh;
-        left:6vw;
+        display:grid;
+        list-style-type: none;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        top:46vh;
+        left:8vw;
       }
       
-
+      #betButtons li{ 
+        height:6vh;
+        width:10vw;
+        border-radius: 50%;
+        background-color:darkblue;
+        color:#000;
+        font-size:1.7em;
+        box-shadow: 0 30px 20px rgba(0, 0, 0, 0.7);
+        background: radial-gradient(circle at 50% 50%, transparent 60%, darkblue 95%) 10% 25%,
+        radial-gradient(circle at 35% 75%, transparent 2%, lightblue 70%) 55% 15%;
+        text-align: center;
+        line-height: 400%;
+        margin-left:3vw;
+      }
+      
       .playerStats #playerBank {
         position: absolute;
         top:7vh;
@@ -90,27 +117,5 @@
       }
       
       
-      #betButtons {
-        position: absolute;
-        display:grid;
-        list-style-type: none;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        top:30vh;
-        left:0vw;
-      
-      }
-      
-      #betButtons li{ 
-        height:60px;
-        width:60px;
-        border-radius: 50%;
-        background-color:darkblue;
-        color:#000;
-        box-shadow: 0 30px 20px rgba(0, 0, 0, 0.7);
-        background: radial-gradient(circle at 50% 50%, transparent 60%, darkblue 95%) 10% 25%,
-        radial-gradient(circle at 35% 75%, transparent 2%, lightblue 70%) 55% 15%;
-        text-align: center;
-        line-height: 400%;
-        margin-left:3vw;
-      }
+
     }      

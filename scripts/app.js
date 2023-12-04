@@ -1,3 +1,14 @@
+class Orientation {
+    constructor(id) {    
+        this.id = id;
+    }
+};
+
+const getOrientation = () => {
+    return window.innerHeight / window.innerWidth > 1 ? 0 : 1
+};
+
+
 class Sequence {
     constructor(percent, symbol, multipliers, symbolArr, symbolArrLength, paylines, payLineCounts, currentWinLineCounts, winningPayLines, winningSymbol) {
         //this.percent = percent || [.14, .14, .11, .11, .11, .11, .11, .05, .05, .04];
@@ -15,6 +26,8 @@ class Sequence {
     }
  }
 
+
+
  class Player {
     constructor(bank, currentWager) {
         this.bank = bank;
@@ -23,6 +36,7 @@ class Sequence {
  }
 
  window.onload = () => {
+    Orientation.ScreenOrientation = new Orientation(getOrientation());
     const bets = [45, 90, 135, 270];
     Player.current = new Player(10000, bets[1]);
     let betButtons = $('#betButtons');
@@ -48,94 +62,125 @@ const updateWager = () => {
  const drawPayLines = () => {
     const canvas = document.getElementById("slotCanvas");
     const ctx = canvas.getContext("2d");
-    
+    let width = Number($('#grid').css('width').replace('px', ''));
+    let height = Number($('#grid').css('height').replace('px', ''));
+    let canvasWidth = width;
+    let canvasHeight = height;
     // Set display size (css pixels).
-    const size = 280;
-    canvas.style.width = `${size + 260}px`;
-    canvas.style.height = `${size}px`;
+    //const size = 280;
+    canvas.style.width = `${canvasWidth}px`;
+    canvas.style.height = `${canvasHeight}px`;
     
     // Set actual size in memory (scaled to account for extra pixel density).
     const scale = window.devicePixelRatio; // Change to 1 on retina screens to see blurry canvas.
-    canvas.width = Math.floor(size * scale);
-    canvas.height = Math.floor(size * scale);
+    canvas.width = Math.floor(canvasWidth * scale);
+    canvas.height = Math.floor(canvasHeight * scale);
     
     // Normalize coordinate system to use CSS pixels.
     ctx.scale(scale, scale);
 
-    const x = size / 2;
-    const y = size / 2;
+    const x = canvasWidth * devicePixelRatio;
+    const y = canvasHeight * devicePixelRatio;
+    console.log(devicePixelRatio)
 
+    $('#row1 .first').css('border', 'solid orange 2px');
+    const A1Margin = $('#row1 .first').offset().top - $('#grid').offset().top;
+    const A1LeftMargin = $('#row1 .first').offset().left - $('#grid').offset().left;
+    A1HeightDiv2 = (Number($('#row1 .first').css('height').replace('px', '')) / 2);
+    A1WidthDiv2 = Number($('#row1 .first').css('width').replace('px', '')) / 2;
+    let cWidth = Number($('#slotCanvas').css('width').replace('px', ''))
+    //const A1y = $('#row1 .first').offset().top - $('#grid').offset().top;
+    //const A1x = $('#row1 .first').offset().left - $('#grid').offset().left;
+    
     //[0,1,2,3,4]
     const row1Line = () => {
         ctx.beginPath();
-        ctx.moveTo(25,25);
-        ctx.lineTo(265, 25);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
         ctx.strokeStyle = 'rgb(45, 45, 90)';
         ctx.lineWidth = 12;
         ctx.stroke();
     }
+    //row1Line();
+    
     //[5,6,7,8,9]
         const row2Line = () => {
         ctx.beginPath();
-        ctx.moveTo(25,125);
-        ctx.lineTo(265, 125);        
+        if(getOrientation() > 0) {
+            ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 * 3) + (A1Margin * 3.5)}`);
+            ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${(A1HeightDiv2 * 3) + (A1Margin * 3.5)}`);
+        } else {
+            ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 * 3) + (A1Margin * 4)}`);
+            ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${(A1HeightDiv2 * 3) + (A1Margin * 4)}`);
+        }
         ctx.strokeStyle = 'rgb(145, 245, 90)';
         ctx.lineWidth = 12;
         ctx.stroke();
     }
+    //row2Line();
     //[10,11,12,13,14]
     const row3Line = () => {
         ctx.beginPath();
-        ctx.moveTo(25,225);
-        ctx.lineTo(265, 225);        
+        if(getOrientation() > 0) {
+            ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 * 6) + (A1Margin * 4)}`);
+            ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${(A1HeightDiv2 * 6) + (A1Margin * 4)}`);
+        } else {
+            ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 * 6) + (A1Margin * 3)}`);
+            ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${(A1HeightDiv2 * 6) + (A1Margin * 3)}`);
+        }
+
         ctx.strokeStyle = 'rgb(255, 45, 19)';
         ctx.lineWidth = 12;
         ctx.stroke();
     }
+    //row3Line();
     //[0,6,2,8,4]
     const row1w = () => {
         ctx.beginPath();
-        ctx.moveTo(25,25);
-        ctx.lineTo(85, 125);
-        ctx.lineTo(145, 25);
-        ctx.lineTo(205, 125);
-        ctx.lineTo(265, 25);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${(A1WidthDiv2 * 3) + A1LeftMargin * 2}`, `${(A1HeightDiv2 * 3) + (A1Margin * 3.5)}`);
+        ctx.lineTo(`${(cWidth / 2) + (A1LeftMargin / 2)}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${((A1WidthDiv2 * 6) + A1LeftMargin * 4.5)}`, `${(A1HeightDiv2 * 3) + (A1Margin * 3.5)}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
         ctx.strokeStyle = 'rgb(224, 175, 19)';
         ctx.lineWidth = 8;
         ctx.stroke();
     }
+    //row1w();
     //[5,1,7,3,9]
     const row2m = () => {
         ctx.beginPath();
-        ctx.moveTo(25,125);
-        ctx.lineTo(85, 25);
-        ctx.lineTo(145, 125);
-        ctx.lineTo(205, 25);
-        ctx.lineTo(265, 125);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 + (A1Margin * 2)) * 2.5}`);
+        ctx.lineTo(`${(A1WidthDiv2 * 3) + A1LeftMargin * 2}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${(cWidth / 2) + (A1LeftMargin / 2)}`, `${(A1HeightDiv2 + (A1Margin * 2)) * 2.5}`);
+        ctx.lineTo(`${((A1WidthDiv2 * 6) + A1LeftMargin * 4.5)}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${(A1HeightDiv2 + (A1Margin * 2)) * 2.5}`);
         ctx.strokeStyle = 'rgb(04, 255, 49)';
         ctx.lineWidth = 4;
         ctx.stroke();
     }
+    //row2m();
     //[5,11,7,13,9]
     const row2w = () => {
         ctx.beginPath();
-        ctx.moveTo(25,125);
-        ctx.lineTo(85, 225);
-        ctx.lineTo(145, 125);
-        ctx.lineTo(205, 225);
-        ctx.lineTo(265, 125);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 + (A1Margin * 2)) * 2.5}`);
+        ctx.lineTo(`${(A1WidthDiv2 * 3) + A1LeftMargin * 2}`, `${((A1HeightDiv2 * 3) + (A1Margin * 3.5)) * 1.75}`);
+        ctx.lineTo(`${(cWidth / 2) + (A1LeftMargin / 2)}`, `${(A1HeightDiv2 + (A1Margin * 2)) * 2.5}`);
+        ctx.lineTo(`${((A1WidthDiv2 * 6) + A1LeftMargin * 4.5)}`, `${((A1HeightDiv2 * 3) + (A1Margin * 3.5)) * 1.75}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${(A1HeightDiv2 + (A1Margin * 2)) * 2.5}`);
         ctx.strokeStyle = 'rgb(104, 105, 149)';
         ctx.lineWidth = 4;
         ctx.stroke();
     }
+    //row2w();
     //[10,6,12,8,14]
     const row3m = () => {
         ctx.beginPath();
-        ctx.moveTo(25,225);
-        ctx.lineTo(85, 125);
-        ctx.lineTo(145, 225);
-        ctx.lineTo(205, 125);
-        ctx.lineTo(265, 225);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 * 6) + (A1Margin * 4)}`);
+        ctx.lineTo(`${(A1WidthDiv2 * 3) + A1LeftMargin * 2}`, `${(A1HeightDiv2 * 3) + (A1Margin * 3.5)}`);
+        ctx.lineTo(`${(cWidth / 2) + (A1LeftMargin / 2)}`, `${(A1HeightDiv2 + (A1Margin * 2)) * 4}`);
+        ctx.lineTo(`${((A1WidthDiv2 * 6) + A1LeftMargin * 4.5)}`, `${(A1HeightDiv2 * 3) + (A1Margin * 3.5)}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${((A1HeightDiv2 * 2.25) + (A1Margin * 2)) * 2.5}`);
         ctx.strokeStyle = 'rgb(10, 205, 49)';
         ctx.lineWidth = 4;
         ctx.stroke();
@@ -143,23 +188,36 @@ const updateWager = () => {
     //[10,6,2,8,14]
     const row3A = () => {
         ctx.beginPath();
-        ctx.moveTo(25,225);    
-        ctx.lineTo(145, 25);    
-        ctx.lineTo(265, 225);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${(A1HeightDiv2 * 6) + (A1Margin * 4)}`);
+        ctx.lineTo(`${(cWidth / 2) + (A1LeftMargin / 2)}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${((A1HeightDiv2 * 2.25) + (A1Margin * 2)) * 2.5}`);
         ctx.strokeStyle = 'rgb(109, 120, 226)';
         ctx.lineWidth = 4;
         ctx.stroke();
     }
+    //row3A();
     //[0,6,12,8,4]
     const row1V = () => {
         ctx.beginPath();
-        ctx.moveTo(25,25);
-        ctx.lineTo(145, 225);    
-        ctx.lineTo(265, 25);
+        ctx.moveTo(`${A1WidthDiv2 + A1LeftMargin}`,`${A1HeightDiv2 + (A1Margin * 2)}`);
+        ctx.lineTo(`${(cWidth / 2) + (A1LeftMargin / 2)}`, `${(A1HeightDiv2 + (A1Margin * 2)) * 4}`);
+        ctx.lineTo(`${cWidth - A1WidthDiv2}`, `${A1HeightDiv2 + (A1Margin * 2)}`);
         ctx.strokeStyle = 'rgb(209, 12, 06)';
         ctx.lineWidth = 4;
         ctx.stroke();
     }
+    //row1V();
+
+    //row1Line();
+    //row2Line();
+    //row3Line();
+    //row1V();
+    //row3A();
+    //row3m();
+    //row2w();
+    //row1w();
+    //row2m();
+
     let doPayLine = [row1Line, row2Line, row3Line, row1V, row3A, row3m, row2w, row1w, row2m];
     /*const applySpinResults = (amount) => {
 
@@ -379,7 +437,7 @@ const doBet = () => {
     Sequence.newSequence.currentWinLineCounts: ${Sequence.newSequence.currentWinLineCounts}\n 
     Sequence.newSequence.winningPayLines: ${Sequence.newSequence.winningPayLines}\n 
     Sequence.newSequence.winningSymbol: ${Sequence.newSequence.winningSymbol}`);*/
-     drawPayLines();     
+    drawPayLines();     
  }
  Spin();
  
