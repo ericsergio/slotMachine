@@ -21,8 +21,8 @@
       
       #grid ul li{
         list-style-type: none;
-        height:8vh;
-        width:13vw;
+        height:7vh;
+        width:11vw;
         border:solid black 2px;
         text-align: center;
         padding:7%;
