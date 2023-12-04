@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel ="stylesheet" href="css/style.css">        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/app.js"></script>
+    </head>
+    <body>
+        <button id = 'spin' onclick="Spin()">SPIN</button>
+        <div class = 'playerStats'>
+            <h3 id = 'playerBank'></h3>
+            <h3 id = 'currentWager'></h3>
+            <h3 id = 'spinWinnings'></h3>
+        </div>
+        <canvas id = "slotCanvas" style="border:1px solid #000000"></canvas>
+        <div id = 'grid'>
+            <ul id = 'row1'>
+                <li class = "first"></li>
+                <li class = "second"></li>
+                <li class = "third"></li>
+                <li class = "fourth"></li>
+                <li class = "fifth"></li>
+            </ul>
+            <ul id = 'row2'>
+                <li class = "first"></li>
+                <li class = "second"></li>
+                <li class = "third"></li>
+                <li class = "fourth"></li>
+                <li class = "fifth"></li>
+            </ul>
+            <ul id = 'row3'>
+                <li class = "first"></li>
+                <li class = "second"></li>
+                <li class = "third"></li>
+                <li class = "fourth"></li>
+                <li class = "fifth"></li>
+            </ul>            
+        </div>
+        <ul id = 'betButtons'></ul>
+    </body>
+</html>
