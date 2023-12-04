@@ -1,9 +1,6 @@
 @media only screen and (orientation: portrait) {
       
     #slotCanvas{
-        position: absolute;
-        top:12vh;
-        left:2vw;
         border:solid red 2px;
       }
 
@@ -24,10 +21,9 @@
         height:7vh;
         width:11vw;
         border:solid black 2px;
-        text-align: center;
-        padding:7%;
+        text-align: center;        
         font-size:2.6em;
-        margin-left:3vw;
+        margin-right:2vw;
       }
       
       #spin{
