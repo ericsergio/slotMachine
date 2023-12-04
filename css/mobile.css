@@ -1,0 +1,116 @@
+@media only screen and (orientation: portrait) {
+      
+      #grid {
+        position: absolute;
+        top:12vh;
+        left:5vw;
+      }
+      
+      #grid ul{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;  
+      }
+      
+      #grid ul li{
+        list-style-type: none;
+        height:4vh;
+        width:9vw;
+        border:solid black 2px;
+        text-align: center;
+        padding:7%;
+        margin-left:8%;
+      }
+      
+      #spin{
+        position: absolute;
+        top:31vh;
+        left:45vw;
+        height:45px;
+        width:90px;
+        border-radius: 5%;  
+        color:#000;
+        box-shadow: 0 30px 20px rgba(0, 0, 0, 0.7);
+        background: radial-gradient(circle at 30% 35%, transparent 30%, rgb(240, 40, 90) 55%) 10% 25%,
+        radial-gradient(circle at 35% 75%, transparent 2%, rgb(110, 159, 199) 70%) 55% 15%;
+      }
+      
+      #slotCanvas{
+        position: absolute;
+        top:14vh;
+        left:6vw;
+      }
+      
+
+      .playerStats #playerBank {
+        position: absolute;
+        top:7vh;
+        left:8vw;
+        height:45px;
+        width:190px;
+        background: radial-gradient(circle at 90% 50%, transparent 20%, rgb(20, 40, 250) 85%) 10% 25%,
+        radial-gradient(circle at 35% 75%, transparent 2%, rgb(163, 19, 09) 70%) 55% 15%;
+        border-radius: 10%;
+        box-shadow: 0 13px 12px rgba(0, 0, 0, 0.4);
+        color:#fff;
+        font-size: 1.4em;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+      }
+      
+      .playerStats #currentWager {
+        position: absolute;
+        top:7vh;
+        left:30vw;
+        height:45px;
+        width:190px;
+        background: radial-gradient(circle at 90% 50%, transparent 20%, rgb(20, 40, 250) 85%) 10% 25%,
+        radial-gradient(circle at 35% 75%, transparent 2%, rgb(163, 19, 09) 70%) 55% 15%;
+        border-radius: 10%;
+        box-shadow: 0 13px 12px rgba(0, 0, 0, 0.4);
+        color:#fff;
+        font-size: 1.4em;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+      }
+      
+      .playerStats #spinWinnings {
+        position: absolute;
+        top:2vh;
+        left:5vw;
+        height:45px;
+        width:190px;
+        background: radial-gradient(circle at 90% 50%, transparent 20%, rgb(20, 40, 250) 85%) 10% 25%,
+        radial-gradient(circle at 35% 75%, transparent 2%, rgb(163, 19, 09) 70%) 55% 15%;
+        border-radius: 10%;
+        box-shadow: 0 13px 12px rgba(0, 0, 0, 0.4);
+        color:#fff;
+        font-size: 1.4em;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+      }
+      
+      
+      #betButtons {
+        position: absolute;
+        display:grid;
+        list-style-type: none;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        top:30vh;
+        left:0vw;
+      
+      }
+      
+      #betButtons li{ 
+        height:60px;
+        width:60px;
+        border-radius: 50%;
+        background-color:darkblue;
+        color:#000;
+        box-shadow: 0 30px 20px rgba(0, 0, 0, 0.7);
+        background: radial-gradient(circle at 50% 50%, transparent 60%, darkblue 95%) 10% 25%,
+        radial-gradient(circle at 35% 75%, transparent 2%, lightblue 70%) 55% 15%;
+        text-align: center;
+        line-height: 400%;
+        margin-left:3vw;
+      }
+    }      
