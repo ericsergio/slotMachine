@@ -422,7 +422,7 @@ const doBet = () => {
     Sequence.newSequence.winningSymbol: ${Sequence.newSequence.winningSymbol}`);*/
     drawPayLines();     
  }
- Spin();
+ //Spin();
  
 
  
