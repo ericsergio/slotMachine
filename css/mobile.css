@@ -1,14 +1,9 @@
 @media only screen and (orientation: portrait) {
-      
-    #slotCanvas{
-        border:solid red 2px;
-      }
 
       #grid {
         position: absolute;
         top:12vh;
         left:2vw;
-        border:solid blue 2px;
       }
       
       #grid ul{
