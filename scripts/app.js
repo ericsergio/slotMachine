@@ -264,35 +264,38 @@ const doBet = () => {
     shuffle();
     let arr = Sequence.newSequence.symbolArr;
     for (let i = 1; i < rndSwap(0, 99) ; i++) {
-       await sleep(70);
+       await sleep(30);
        $('#row1 .first').text(`${arr[rndSwap(0, 99)]}`);
        $('#row2 .first').text(`${arr[rndSwap(0, 99)]}`);
        $('#row3 .first').text(`${arr[rndSwap(0, 99)]}`);
     }
-    shuffle();
-    for (let i = 1; i < rndSwap(0, 99) ; i++) {
+    //shuffle();
+    for (let i = 1; i < rndSwap(10, 99) ; i++) {
         await sleep(80);
         $('#row1 .second').text(`${arr[rndSwap(0, 99)]}`);
         $('#row2 .second').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .second').text(`${arr[rndSwap(0, 99)]}`);
      }
-     shuffle();
-     for (let i = 1; i < rndSwap(0, 99) ; i++) {
-        await sleep(90);
+     //shuffle();
+     await sleep(20);
+     for (let i = 1; i < rndSwap(10, 99) ; i++) {
+        await sleep(110);
         $('#row1 .third').text(`${arr[rndSwap(0, 99)]}`);
         $('#row2 .third').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .third').text(`${arr[rndSwap(0, 99)]}`);
      }
      shuffle();
-     for (let i = 1; i < rndSwap(0, 99) ; i++) {
-        await sleep(150);
+     await sleep(20);
+     for (let i = 1; i < rndSwap(10, 99) ; i++) {
+        await sleep(140);
         $('#row1 .fourth').text(`${arr[rndSwap(0, 99)]}`);
         $('#row2 .fourth').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .fourth').text(`${arr[rndSwap(0, 99)]}`);
      }
      shuffle();
-     for (let i = 1; i < rndSwap(0, 99) ; i++) {
-        await sleep(200);
+     await sleep(20);
+     for (let i = 1; i < rndSwap(10, 99) ; i++) {
+        await sleep(170);
         $('#row1 .fifth').text(`${arr[rndSwap(0, 99)]}`);
         $('#row2 .fifth').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .fifth').text(`${arr[rndSwap(0, 99)]}`);
