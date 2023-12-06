@@ -20,6 +20,17 @@
         font-size:2.6em;
         margin-right:2vw;
       }
+
+      #grid ul li img{
+        position:absolute;
+        height:100px;
+        width:100px;
+        /*background-position-x: center;
+        background-position: center;
+        background-attachment: fixed;
+        background-size:cover;
+        background-origin: ;*/
+      }
       
       #spin{
         position: absolute;

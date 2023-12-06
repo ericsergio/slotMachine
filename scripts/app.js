@@ -260,45 +260,82 @@ const doBet = () => {
             Sequence.newSequence.symbolArr[r] = current;
         }
     }
-    
+    let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'jackpot.png', 'grape.png', 'cherry.png'];
     shuffle();
     let arr = Sequence.newSequence.symbolArr;
     for (let i = 1; i < rndSwap(69, 139) ; i++) {
        await sleep(20);
-       $('#row1 .first').text(`${arr[rndSwap(0, 99)]}`);
+       $('#row1 .first').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
        $('#row2 .first').text(`${arr[rndSwap(0, 99)]}`);
        $('#row3 .first').text(`${arr[rndSwap(0, 99)]}`);
+       $('#row1 .first').css({
+        'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
+        'backgroundRepeat': `no-repeat`,
+        'backgroundSize': `100px 100px`,
+        'backgroundSize':'fit' 
+    });
     }
     //shuffle();
     for (let i = 1; i < rndSwap(69, 139) ; i++) {
         await sleep(20);
-        $('#row1 .second').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .second').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
         $('#row2 .second').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .second').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .second').css({
+            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
+            'backgroundRepeat': `no-repeat`,
+            'backgroundSize': `100px 100px`,
+            'backgroundSize':'fit' 
+        });
      }
      //shuffle();
      await sleep(20);
      for (let i = 1; i < rndSwap(69, 139) ; i++) {
         await sleep(20);
-        $('#row1 .third').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .third').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
         $('#row2 .third').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .third').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .third').css({
+            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
+            'backgroundRepeat': `no-repeat`,
+            'backgroundSize': `100px 100px`,
+            'backgroundSize':'fit' 
+        });
      }
      shuffle();
      await sleep(20);
      for (let i = 1; i < rndSwap(10, 79) ; i++) {
         await sleep(70);
-        $('#row1 .fourth').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .fourth').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
         $('#row2 .fourth').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .fourth').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .fourth').css({
+            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
+            'backgroundRepeat': `no-repeat`,
+            'backgroundSize': `100px 100px`,
+            'backgroundSize':'fit' 
+        });
      }
      shuffle();
+     //let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'jackpot.png', 'grape.png', 'cherry.png'];
      await sleep(20);
      for (let i = 1; i < rndSwap(10, 59) ; i++) {
         await sleep(170);
-        $('#row1 .fifth').text(`${arr[rndSwap(0, 99)]}`);
+        $('#row1 .fifth').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
         $('#row2 .fifth').text(`${arr[rndSwap(0, 99)]}`);
         $('#row3 .fifth').text(`${arr[rndSwap(0, 99)]}`);
+        /*$('#row1 .fifth').html(`<img src="assets/spinicons/${test[rndSwap(0, 9)]}" />`);
+        $('#row1 .fifth img').css({
+            'max-height':`50px`,
+            'max-width':`50px`
+        })*/
+        //$('#row1 .fifth').css({'backgroundImage':`url("file:///Users/ericsergio/Sites/slotMachine/assets/spinicons/${test[rndSwap(0, 9)]}"`});
+        $('#row1 .fifth').css({
+            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
+            'backgroundRepeat': `no-repeat`,
+            'backgroundSize': `100px 100px`,
+            'backgroundSize':'fit' 
+        });
      }
      doBet();
      for(let i in Sequence.newSequence.payLines) {
