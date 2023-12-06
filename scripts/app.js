@@ -243,6 +243,7 @@ const doBet = () => {
     Sequence.newSequence = new Sequence();
     $('#grid ul li').each(function() {
         $(this).text('');
+        $(this).css('backgroundImage', 'none');
     });
 
     clearPayLines();
@@ -260,7 +261,7 @@ const doBet = () => {
             Sequence.newSequence.symbolArr[r] = current;
         }
     }
-    let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'jackpot.png', 'grape.png', 'cherry.png'];
+    let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'cherry.png', 'grape.png', 'jackpot.png'];
     shuffle();
     let arr = Sequence.newSequence.symbolArr;
     for (let i = 1; i < rndSwap(69, 139) ; i++) {
@@ -275,6 +276,12 @@ const doBet = () => {
         'backgroundSize':'fit' 
     });
     }
+    $('#row1 .first').css({
+        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .first').text())]}"`,
+        'backgroundRepeat': `no-repeat`,
+        'backgroundSize': `100px 100px`,
+        'backgroundSize':'fit' 
+    });
     //shuffle();
     for (let i = 1; i < rndSwap(69, 139) ; i++) {
         await sleep(20);
@@ -288,6 +295,12 @@ const doBet = () => {
             'backgroundSize':'fit' 
         });
      }
+     $('#row1 .second').css({
+        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .second').text())]}"`,
+        'backgroundRepeat': `no-repeat`,
+        'backgroundSize': `100px 100px`,
+        'backgroundSize':'fit' 
+    });
      //shuffle();
      await sleep(20);
      for (let i = 1; i < rndSwap(69, 139) ; i++) {
@@ -302,6 +315,12 @@ const doBet = () => {
             'backgroundSize':'fit' 
         });
      }
+     $('#row1 .third').css({
+        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .third').text())]}"`,
+        'backgroundRepeat': `no-repeat`,
+        'backgroundSize': `100px 100px`,
+        'backgroundSize':'fit' 
+    });
      shuffle();
      await sleep(20);
      for (let i = 1; i < rndSwap(10, 79) ; i++) {
@@ -316,6 +335,12 @@ const doBet = () => {
             'backgroundSize':'fit' 
         });
      }
+     $('#row1 .fourth').css({
+        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .fourth').text())]}"`,
+        'backgroundRepeat': `no-repeat`,
+        'backgroundSize': `100px 100px`,
+        'backgroundSize':'fit' 
+    });
      shuffle();
      //let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'jackpot.png', 'grape.png', 'cherry.png'];
      await sleep(20);
@@ -337,6 +362,12 @@ const doBet = () => {
             'backgroundSize':'fit' 
         });
      }
+     $('#row1 .fifth').css({
+        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .fifth').text())]}"`,
+        'backgroundRepeat': `no-repeat`,
+        'backgroundSize': `100px 100px`,
+        'backgroundSize':'fit' 
+    });
      doBet();
      for(let i in Sequence.newSequence.payLines) {
         for(let n in Sequence.newSequence.payLines[i]) {
