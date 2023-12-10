@@ -280,7 +280,7 @@ const doBet = () => {
                  $(this).css({
                     'backgroundImage': `url('assets/spinicons/${imgArr[symbolArr.indexOf($(this).text())]}`,
                     'backgroundRepeat': `no-repeat`,
-                    'backgroundSize': `70px 70px`
+                    'backgroundSize': `100px 100px`
                 });
             });
         };
