@@ -19,6 +19,7 @@
         text-align: center;        
         font-size:2.6em;
         margin-right:2vw;
+        overflow: hidden;
       }
 
       #grid ul li img{

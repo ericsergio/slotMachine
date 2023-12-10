@@ -10,7 +10,7 @@ const getOrientation = () => {
 
 
 class Sequence {
-    constructor(percent, symbol, multipliers, symbolArr, symbolArrLength, paylines, payLineCounts, currentWinLineCounts, winningPayLines, winningSymbol) {
+    constructor(percent, symbol, multipliers, symbolArr, symbolArrLength, paylines, imageFileNames, payLineCounts, currentWinLineCounts, winningPayLines, winningSymbol) {
         //this.percent = percent || [.14, .14, .11, .11, .11, .11, .11, .05, .05, .04];
         this.percent = percent || [.15, .15,  .1,  .1,  .1,  .1,  .2,  .03, .03, .04];
         this.symbol = symbol || [  '9', '10', 'J', 'Q', 'K', 'A', 'W', 'C', 'G', 'B'];
@@ -19,6 +19,7 @@ class Sequence {
         this.symbolArrLength = symbolArrLength || 100;
         this.payLines = [[0,1,2,3,4], [5,6,7,8,9], [10,11,12,13,14], [0,6,12,8,4], 
         [10,6,2,8,14], [10,6,12,8,14], [5,11,7,13,9], [0,6,2,8,4], [5,1,7,3,9]];
+        this.imageFileNames = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'cherry.png', 'grape.png', 'jackpot.png'];
         this.payLineCounts = []; //all counts including the zeros
         this.currentWinLineCounts = []; //the counts that are not 0
         this.winningPayLines = []; //the arrays of symbols for the paylines
@@ -260,114 +261,27 @@ const doBet = () => {
             Sequence.newSequence.symbolArr[i] = swap;
             Sequence.newSequence.symbolArr[r] = current;
         }
-    }
-    let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'cherry.png', 'grape.png', 'jackpot.png'];
+    }    
     shuffle();
     let arr = Sequence.newSequence.symbolArr;
-    for (let i = 1; i < rndSwap(69, 139) ; i++) {
-       await sleep(20);
-       $('#row1 .first').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
-       $('#row2 .first').text(`${arr[rndSwap(0, 99)]}`);
-       $('#row3 .first').text(`${arr[rndSwap(0, 99)]}`);
-       $('#row1 .first').css({
-        'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
-        'backgroundRepeat': `no-repeat`,
-        'backgroundSize': `100px 100px`,
-        'backgroundSize':'fit' 
-    });
+    let symbolArr = Sequence.newSequence.symbol;
+    let imgArr = Sequence.newSequence.imageFileNames;
+    let columns = ['.first', '.second', '.third', '.fourth', '.fifth'];
+    //outer loop loops through each column, so initially will spin the first character in each row and so on.
+    for(let o = 0;o < columns.length; o++ ) {
+        //have i decrement by o * 10 to let the spin slow down as each column finishes
+        for (let i = 1; i < (columns.length * 10) - (o * 10); i++) {
+            let sleepVal;
+            o < 3 ? sleepVal = 20 : sleepVal = 20 * o;            
+            await sleep(sleepVal);
+            $(`#grid ul ${columns[o]}`).each(function() {
+                 $(this).text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
+                 //swap the invisible text characters with the corresponding background images 
+                 $(this).css({'backgroundImage': `url('assets/spinicons/${imgArr[symbolArr.indexOf($(this).text())]}`});
+            });
+        };
+        shuffle();
     }
-    $('#row1 .first').css({
-        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .first').text())]}"`,
-        'backgroundRepeat': `no-repeat`,
-        'backgroundSize': `100px 100px`,
-        'backgroundSize':'fit' 
-    });
-    //shuffle();
-    for (let i = 1; i < rndSwap(69, 139) ; i++) {
-        await sleep(20);
-        $('#row1 .second').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
-        $('#row2 .second').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row3 .second').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row1 .second').css({
-            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
-            'backgroundRepeat': `no-repeat`,
-            'backgroundSize': `100px 100px`,
-            'backgroundSize':'fit' 
-        });
-     }
-     $('#row1 .second').css({
-        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .second').text())]}"`,
-        'backgroundRepeat': `no-repeat`,
-        'backgroundSize': `100px 100px`,
-        'backgroundSize':'fit' 
-    });
-     //shuffle();
-     await sleep(20);
-     for (let i = 1; i < rndSwap(69, 139) ; i++) {
-        await sleep(20);
-        $('#row1 .third').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
-        $('#row2 .third').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row3 .third').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row1 .third').css({
-            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
-            'backgroundRepeat': `no-repeat`,
-            'backgroundSize': `100px 100px`,
-            'backgroundSize':'fit' 
-        });
-     }
-     $('#row1 .third').css({
-        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .third').text())]}"`,
-        'backgroundRepeat': `no-repeat`,
-        'backgroundSize': `100px 100px`,
-        'backgroundSize':'fit' 
-    });
-     shuffle();
-     await sleep(20);
-     for (let i = 1; i < rndSwap(10, 79) ; i++) {
-        await sleep(70);
-        $('#row1 .fourth').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
-        $('#row2 .fourth').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row3 .fourth').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row1 .fourth').css({
-            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
-            'backgroundRepeat': `no-repeat`,
-            'backgroundSize': `100px 100px`,
-            'backgroundSize':'fit' 
-        });
-     }
-     $('#row1 .fourth').css({
-        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .fourth').text())]}"`,
-        'backgroundRepeat': `no-repeat`,
-        'backgroundSize': `100px 100px`,
-        'backgroundSize':'fit' 
-    });
-     shuffle();
-     //let test = ['9.png', '10.png', 'j.png', 'q.png', 'k.png', 'a.png', 'wild.png', 'jackpot.png', 'grape.png', 'cherry.png'];
-     await sleep(20);
-     for (let i = 1; i < rndSwap(10, 59) ; i++) {
-        await sleep(170);
-        $('#row1 .fifth').text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
-        $('#row2 .fifth').text(`${arr[rndSwap(0, 99)]}`);
-        $('#row3 .fifth').text(`${arr[rndSwap(0, 99)]}`);
-        /*$('#row1 .fifth').html(`<img src="assets/spinicons/${test[rndSwap(0, 9)]}" />`);
-        $('#row1 .fifth img').css({
-            'max-height':`50px`,
-            'max-width':`50px`
-        })*/
-        //$('#row1 .fifth').css({'backgroundImage':`url("file:///Users/ericsergio/Sites/slotMachine/assets/spinicons/${test[rndSwap(0, 9)]}"`});
-        $('#row1 .fifth').css({
-            'backgroundImage':`url("assets/spinicons/${test[rndSwap(0, 9)]}"`,
-            'backgroundRepeat': `no-repeat`,
-            'backgroundSize': `100px 100px`,
-            'backgroundSize':'fit' 
-        });
-     }
-     $('#row1 .fifth').css({
-        'backgroundImage':`url("assets/spinicons/${test[Sequence.newSequence.symbol.indexOf($('#row1 .fifth').text())]}"`,
-        'backgroundRepeat': `no-repeat`,
-        'backgroundSize': `100px 100px`,
-        'backgroundSize':'fit' 
-    });
      doBet();
      for(let i in Sequence.newSequence.payLines) {
         for(let n in Sequence.newSequence.payLines[i]) {
@@ -385,10 +299,6 @@ const doBet = () => {
             let second = obj[i][1];
             let wild = sym[6];
             let third = obj[i][2];
-            let fourth = obj[i][3];
-            let fifth = obj[i][4];
-            let current = obj[i][n];
-            let nxt = obj[i][next];
             if(
                 (first === second && first === third) ||
                 (first === second && third === wild) ||
@@ -442,36 +352,35 @@ const doBet = () => {
     let lineWinnings = 0;
     let spinWinnings = 0;
     let bet = Player.current.currentWager;
-    for(let i = 0;i < calcWin.length; i++) {
-        console.log(`==${calcWin[i]}`);
+    for(let i = 0;i < calcWin.length; i++) {        
         console.log(Sequence.newSequence.winningSymbol[i])
         switch (Sequence.newSequence.winningSymbol[i]) {
             case '9':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 4);
                 break;
             case '10':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 4);
                 break;
             case 'J':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1.11;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 2);
                 break;
             case 'Q':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1.11;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 2);
                 break;
             case 'A':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1.11;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 2);
                 break;
             case 'W':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 3;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 2);
                 break;
             case 'C':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1.75;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 2);
                 break;
             case 'G':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 1.75;
+                lineWinnings += (bet * (calcWin[i] / 4)) * (calcWin[i] / 2);
                 break;
             case 'B':
-                lineWinnings += (bet * (calcWin[i] / 4)) * 3.75;
+                lineWinnings += (bet * (calcWin[i] / 4)) * calcWin[i] * 2;
                 break;
             default:
         }
