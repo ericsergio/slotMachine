@@ -277,7 +277,11 @@ const doBet = () => {
             $(`#grid ul ${columns[o]}`).each(function() {
                  $(this).text(`${arr[rndSwap(0, 99)]}`).css('color', 'transparent');
                  //swap the invisible text characters with the corresponding background images 
-                 $(this).css({'backgroundImage': `url('assets/spinicons/${imgArr[symbolArr.indexOf($(this).text())]}`});
+                 $(this).css({
+                    'backgroundImage': `url('assets/spinicons/${imgArr[symbolArr.indexOf($(this).text())]}`,
+                    'backgroundRepeat': `no-repeat`,
+                    'backgroundSize': `70px 70px`
+                });
             });
         };
         shuffle();
